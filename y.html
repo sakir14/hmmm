@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maafin Aku 🥺💖</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffe3ec, #d9e7ff);
+    margin: 0;
+  }
+
+  .popup {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    padding: 40px 30px;
+    text-align: center;
+    width: 320px;
+    transition: all 0.4s ease;
+  }
+
+  h1 {
+    color: #ff4f8b;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #555;
+    font-size: 0.95em;
+    margin-bottom: 25px;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  #yesBtn {
+    background: linear-gradient(90deg, #ff7eb3, #ff758c);
+    color: white;
+  }
+
+  #noBtn {
+    background: #e0e0e0;
+    color: #555;
+    position: relative;
+  }
+
+  .hearts {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatUp 2s linear forwards;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="popup" id="popup">
+  <h1> Aku minta maaf 🥺💖 </h1>
+  <p> Aku beneran gak bermaksud bikin kamu kesel.<br> Maafin aku, ya? 🥹 </p>
+  <div class="btn-group">
+    <button id="yesBtn">Maafin 💞</button>
+    <button id="noBtn">Enggak 😠</button>
+  </div>
+</div>
+
+<div class="hearts" id="hearts"></div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const popup = document.getElementById("popup");
+const hearts = document.getElementById("hearts");
+
+yesBtn.addEventListener("click", () => {
+  popup.innerHTML = `
+    <h1>Yay! Makasih udah maafin 😭💖</h1>
+    <p>Aku janji gak ngulangin lagi 😚✨</p>
+  `;
+  generateHearts();
+});
+
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 100 - 50;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+function generateHearts() {
+  for (let i = 0; i < 15; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = Math.random() * 100 + "vh";
+    heart.textContent = "💖";
+    hearts.appendChild(heart);
+    setTimeout(() => heart.remove(), 2000);
+  }
+}
+</script>
+
+</body>
+</html>
